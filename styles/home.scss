@@ -1,3 +1,94 @@
-h1 {
-  color: tomato;
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,400,900');
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  .us-cont {
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    h1 {
+      position: fixed;
+      margin: 5px;
+      font-family: Montserrat;
+      font-weight: 900;
+    }
+    .ps-cont {
+      position: fixed;
+      right: 100px;
+      input {
+        margin: 5px;
+        border-radius: 10px;
+      }
+    }
+  }
+  .ms-cont {
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    width: auto;
+    .tr-cont {
+      height: 50%;
+      display: flex;
+      margin-bottom: 1px;
+    }
+    .br-cont {
+      height: 50%;
+      display: flex;
+      margin-top: 1px;
+    }
+  }
+  .ls-cont {
+    height: 10%;
+  }
 }
+
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 40vh;
+  padding: 1px;
+  .author-space {
+    background-color: #7d7d7d;
+    border-radius: 0 0 5px 0;
+    position: absolute;
+    padding: 4px;
+    opacity: 0.5;
+    .author-name {
+      font-weight: 100;
+      color: white;
+      font-family: Montserrat;
+    }
+  }
+  .the-goods {
+    height: 100%;
+  }
+  .palette-container {
+    position: relative;
+    flex-direction: row;
+    justify-content: initial;
+    margin-top: -130px;
+    margin-left: 9px;
+    .color {
+      max-height: 25%;
+      height: 30px;
+      width: 30px;
+    }
+    .color-1 {
+      background-color: #C12A32;
+      border-radius: 5px 5px 0 0;
+    }
+    .color-2 {
+      background-color: #7E4125;
+    }
+    .color-3 {
+      background-color: #CF9B71;
+    }
+    .color-4 {
+      background-color: #171311;
+      border-radius: 0 0 5px 5px;
+    }
+  }
+}
+
