@@ -15,17 +15,6 @@ class App extends Component {
         color4: '#6e5773'
       }
     }
-    this.handleImageMouseEnter = this.handleImageMouseEnter.bind(this);
-    this.handleImageMouseLeave = this.handleImageMouseLeave.bind(this);
-  }
-
-  handleImageMouseEnter(event) {
-    console.log('senpai noticed my mouse enter', event.currentTarget.children[1]);
-    // get color of palette of image and
-  }
-
-  handleImageMouseLeave(event) {
-    console.log('senpai noticed my mouse leave')
   }
 
   render() {
@@ -33,7 +22,7 @@ class App extends Component {
       <div>
         <UpperSpace palette={this.state.colorPalette} />
         <MainSpace onImgME={this.handleImageMouseEnter} onImgML={this.handleImageMouseLeave}/>
-        <LowerSpace />
+
       </div>
     );
   }

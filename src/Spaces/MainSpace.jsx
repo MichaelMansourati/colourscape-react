@@ -6,8 +6,8 @@ class MainSpace extends Component {
   render() {
     return(
       <div className="ms-cont">
-        <TopRow onImgME={this.props.onImgME} onImgML={this.props.onImgML} />
-        <BottomRow onImgME={this.props.onImgME} onImgML={this.props.onImgML} />
+        <TopRow />
+        <BottomRow />
       </div>
     )
   }

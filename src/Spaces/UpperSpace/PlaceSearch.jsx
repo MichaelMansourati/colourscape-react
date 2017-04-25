@@ -5,7 +5,7 @@ class PlaceSearch extends Component {
     return(
       <div className="ps-cont">
         <form>
-          <input type="text" className="ps-searchbar"/>
+          <input type="text" className="ps-searchbar" placeholder="e.g. Distillery District"></input>
         </form>
       </div>
     )
