@@ -121,6 +121,8 @@ html, body {
 
 .card {
   position: relative;
+  width: auto;
+  display: flex;
   height: 46.75vh;
   margin: 0.5vh 0 0 0.5vh;
   &:hover {
