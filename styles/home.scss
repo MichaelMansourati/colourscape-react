@@ -120,6 +120,8 @@ html, body {
 //\\//\\//\\ C A R D //\\//\\//\\
 
 .card {
+  display: flex;
+  flex-direction: column;
   position: relative;
   width: auto;
   display: flex;
