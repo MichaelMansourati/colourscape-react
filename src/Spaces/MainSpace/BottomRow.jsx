@@ -14,6 +14,7 @@ class BottomRow extends Component {
             <div className="color color-2"></div>
             <div className="color color-3"></div>
             <div className="color color-4"></div>
+            <footer><i className="fa fa-heart-o"></i></footer>
           </div>
         </div>
         <div className="card" onMouseEnter={this.props.onImgME} onMouseLeave={this.props.onImgML} >

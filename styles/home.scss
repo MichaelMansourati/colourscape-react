@@ -123,6 +123,18 @@ html, body {
       opacity: 1;
     }
   }
+
+  i {
+    color: white;
+    position: relative;
+    float: right;
+    height: 5%;
+    width: auto;
+    bottom: 9px;
+    right: 5px;
+  }
+
+
   .author-space {
     opacity: 0;
     transition: opacity 0.25s;
@@ -166,6 +178,10 @@ html, body {
       background-color: #171311;
       border-radius: 0 0 5px 5px;
     }
+
+
   }
 }
+
+
 
