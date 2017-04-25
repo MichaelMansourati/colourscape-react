@@ -5,17 +5,24 @@ html, body {
   flex-direction: column;
   justify-content: space-between;
   font-family: Montserrat;
-  margin: 0px;
+  margin: 0;
   padding: 0;
+  background-color: lightgrey;
   .us-cont {
+    background-color: white;
+    z-index: 1;
+    position: fixed;
+    width: 100%;
     display: flex;
     flex-direction: row;
-    height: 4vh;
+    height: 5vh;
+    box-shadow: 0 0px 11px 0px #3a3a3a;
     h1 {
+      margin-left: 1vh;
       position: fixed;
-      margin: 5px;
+      line-height: 0.75vh;
       font-weight: 900;
-      font-size: 3.25vh;
+      font-size: 3.5vh;
     }
     .ps-cont {
       position: fixed;
@@ -36,10 +43,15 @@ html, body {
     }
   }
   .ms-cont {
-    margin-left: 1px;
+    z-index: -1;
+    margin-top: 5vh;
+    padding: 0;
     display: flex;
+    align-content: space-around;
+    align-items: flex-start;
+    position: absolute;
     flex-direction: column;
-    height: auto;
+    height: 95vh;
     width: auto;
     .tr-cont {
       flex: 1;
@@ -49,7 +61,7 @@ html, body {
     .br-cont {
       flex: 1;
       display: flex;
-      margin-top: 0;
+      margin-bottom: 0.5vh;
     }
   }
   .ls-cont {
@@ -60,9 +72,8 @@ html, body {
 .card {
   display: flex;
   flex-direction: column;
-  height: 45vh;
-  padding: 4px;
-  margin-bottom: 0;
+  height: 46.75vh;
+  margin: 0.5vh 0 0 0.5vh;
   &:hover {
     .author-space {
       opacity: 0.5;

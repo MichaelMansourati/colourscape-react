@@ -3,6 +3,8 @@ import UpperSpace from './Spaces/UpperSpace.jsx';
 import MainSpace from './Spaces/MainSpace.jsx';
 import LowerSpace from './Spaces/LowerSpace.jsx'
 
+
+
 class App extends Component {
 
   constructor() {
@@ -22,7 +24,6 @@ class App extends Component {
       <div>
         <UpperSpace palette={this.state.colorPalette} />
         <MainSpace onImgME={this.handleImageMouseEnter} onImgML={this.handleImageMouseLeave}/>
-
       </div>
     );
   }
