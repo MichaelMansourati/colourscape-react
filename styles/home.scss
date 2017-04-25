@@ -10,34 +10,75 @@ html, body {
   background-color: lightgrey;
   .us-cont {
     background-color: white;
-    z-index: 1;
     position: fixed;
     width: 100%;
-    display: flex;
-    flex-direction: row;
     height: 5vh;
     box-shadow: 0 0px 11px 0px #3a3a3a;
     h1 {
       margin-left: 1vh;
       position: fixed;
       line-height: 0.75vh;
-      font-weight: 900;
+      font-weight: 400;
       font-size: 3.5vh;
     }
     .ps-cont {
       position: fixed;
       right: 100px;
-      input {
-        background-color: lightgrey;
-        border: none;
-        font-weight: 100;
-        font-size: 2.5vh;
-        margin: 0.75vh;
-        border-radius: 20px;
-        padding: 0 15px;
-        &::placeholder {
+      .ps-form {
+        display: flex;
+        flex-direction: row;
+        height: 5vh;
+        input.ps-searchbar {
+          &:focus {
+            outline: none;
+          }
+          border: none;
+          border-bottom: 1px solid lightgrey;
           font-weight: 100;
-          opacity: 0.5;
+          font-size: 2vh;
+          margin: 1.25vh;
+          &::placeholder {
+            color: lightgrey;
+          }
+        }
+        .colorbox {
+          -webkit-appearance: none;
+          padding: 1vh;
+          margin: 1.5vh 0.1vh;
+          outline: none;
+          &:checked {
+
+            border-bottom: 0.2vh solid black;
+          }
+        }
+        .cb-red {
+          background-color: red;
+        }
+        .cb-orange {
+          background-color: orange;
+        }
+        .cb-yellow {
+          background-color: yellow;
+        }
+        .cb-green {
+          background-color: green;
+        }
+        .cb-blue {
+          background-color: blue;
+        }
+        .cb-purple {
+          background-color: purple;
+        }
+        .cb-white {
+          background-color: white;
+          border: 0.1vh solid black;
+          padding: 0.9vh;
+        }
+        .cb-grey {
+          background-color: grey;
+        }
+        .cb-black {
+          background-color: black;
         }
       }
     }
