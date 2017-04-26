@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
-import UpperSpace from './Spaces/UpperSpace.jsx';
-import MainSpace from './Spaces/MainSpace.jsx';
-import LowerSpace from './Spaces/LowerSpace.jsx'
-
+import UpperSpace         from './Spaces/UpperSpace.jsx';
+import MainSpace          from './Spaces/MainSpace.jsx';
 
 
 class App extends Component {
@@ -16,18 +14,48 @@ class App extends Component {
         colour3: '#d45d79',
         colour4: '#6e5773'
       },
-      colourSelect: []
+      colourSelect: {
+        red:    false,
+        orange: false,
+        yellow: false,
+        green:  false,
+        blue:   false,
+        purple: false,
+        brown:  false,
+        black:  false,
+        grey:   false,
+        white:  false
+      }
     }
     this.handleColourSelect = this.handleColourSelect.bind(this);
   }
 
-  handleColourSelect(event) {
-    const checkedColour = event.target.name
-    let selectedColours = this.state.colourSelect.slice();
-    selectedColours.push(checkedColour);
 
-    this.setState({colourSelect: selectedColours});
-    console.log('selectedColours: ', selectedColours);
+  handleColourSelect(event) {
+    const checkedColour = event.target.name;
+    const colourBool    = this.state.colourSelect[checkedColour];
+    let trueColours = [];
+    let falseColours = [];
+
+    let newColourObj = Object.assign({}, this.state.colourSelect);
+    newColourObj[checkedColour] = !newColourObj[checkedColour];
+
+    this.setState({colourSelect: newColourObj});
+
+
+    for (let colour in this.state.colourSelect) {
+      if (this.state.colourSelect[colour] == true) {
+        trueColours.push(colour);
+      } else {
+        falseColours.push(colour);
+      }
+    }
+    if (trueColours.length >= 4) {
+      for (let colour in falseColours) {
+        document.getElementsByClassName(`cb-${colour}`).disabled = true;
+      }
+    }
+    console.log(trueColours, falseColours);
   }
 
 
