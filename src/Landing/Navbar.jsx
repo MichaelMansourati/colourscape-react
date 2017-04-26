@@ -7,7 +7,7 @@ class Navbar extends Component {
     return (
       <div className="us-cont">
         <DynamicTitle palette={this.props.palette} />
-        <PlaceSearch />
+        <PlaceSearch colorSelect={this.props.colorSelect} disableColors={this.props.disableColors} />
       </div>
     )
   }
