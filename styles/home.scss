@@ -56,11 +56,11 @@ html, body {
             color: lightgrey;
           }
         }
-        .colorbox-cont {
+        .colourbox-cont {
           height: 3vh;
           margin: 1vh;
           border-radius: 0.6vh;
-          .colorbox {
+          .colourbox {
             -webkit-appearance: none;
             border: 0.2vh solid lightgrey;
             padding: 1vh;
@@ -87,6 +87,9 @@ html, body {
           }
           .cb-purple {
             background-color: purple;
+          }
+          .cb-brown {
+            background-color: #885418;
           }
           .cb-white {
             background-color: white;
@@ -180,21 +183,21 @@ html, body {
     justify-content: initial;
     margin-top: -2.5vh;
     margin-left: 1vh;
-    .color {
+    .colour {
       height: 1.5vh;
       width: 3vh;
     }
-    .color-1 {
+    .colour-1 {
       background-color: #C12A32;
       border-radius: 0.4vh 0 0 0.4vh;
     }
-    .color-2 {
+    .colour-2 {
       background-color: #7E4125;
     }
-    .color-3 {
+    .colour-3 {
       background-color: #CF9B71;
     }
-    .color-4 {
+    .colour-4 {
       background-color: #171311;
       border-radius: 0 0.4vh 0.4vh 0;
     }
