@@ -25,7 +25,8 @@ class App extends Component {
         black:  false,
         grey:   false,
         white:  false
-      }
+      },
+      disableColours: {}
     }
     this.handleColourSelect = this.handleColourSelect.bind(this);
   }
@@ -43,19 +44,25 @@ class App extends Component {
     this.setState({colourSelect: newColourObj});
 
 
-    for (let colour in this.state.colourSelect) {
-      if (this.state.colourSelect[colour] == true) {
+    for (let colour in newColourObj) {
+      if (newColourObj[colour] == true) {
         trueColours.push(colour);
       } else {
         falseColours.push(colour);
       }
     }
-    if (trueColours.length >= 4) {
-      for (let colour in falseColours) {
-        document.getElementsByClassName(`cb-${colour}`).disabled = true;
+
+    if (trueColours.length == 4) {
+      // console.log('at colour max');
+      let newDisabledColourObj = Object.assign({}, newColourObj);
+      for (let colour in newDisabledColourObj) {
+        newDisabledColourObj[colour] = !newDisabledColourObj[colour];
       }
+      this.setState({disableColours: newDisabledColourObj});
+    } else {
+      this.setState({disableColours: {}});
     }
-    console.log(trueColours, falseColours);
+    // console.log("trueColours: ", trueColours, "falseColours: ", falseColours);
   }
 
 
@@ -63,7 +70,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <UpperSpace palette={this.state.colourPalette} colourSelect={this.handleColourSelect} />
+        <UpperSpace palette={this.state.colourPalette} colourSelect={this.handleColourSelect} disableColours={this.state.disableColours} />
         <MainSpace />
       </div>
     );
