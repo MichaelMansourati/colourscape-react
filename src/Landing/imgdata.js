@@ -1,4 +1,4 @@
-[
+let imageData = [
   {
     "url": "https://s-media-cache-ak0.pinimg.com/originals/6c/a4/39/6ca439150df53bd18338a45a995dc4df.jpg",
     "color-1": "#C12A32",
@@ -40,8 +40,7 @@
     "color-2": "#7E4125",
     "color-3": "#CF9B71",
     "color-4": "#171311"
-  }
-
+  },
   {
     "url": "https://www.hollyburn.com/drive/uploads/2016/11/Downtown-Toronto-Gooderham-Building-600x338.jpg",
     "color-1": "#C12A32",
@@ -79,7 +78,6 @@
     "color-3": "#CF9B71",
     "color-4": "#171311"
   }
-
-
-
 ]
+
+export default imageData

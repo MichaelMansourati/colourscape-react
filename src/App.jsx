@@ -3,7 +3,6 @@ import Navbar from './Landing/Navbar.jsx';
 import Content from './Landing/Content.jsx';
 
 
-
 class App extends Component {
 
   constructor() {
@@ -17,6 +16,7 @@ class App extends Component {
       }
     }
   }
+
 
   render() {
     return (
