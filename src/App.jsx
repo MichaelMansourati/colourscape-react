@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import UpperSpace from './Spaces/UpperSpace.jsx';
-import MainSpace from './Spaces/MainSpace.jsx';
-import LowerSpace from './Spaces/LowerSpace.jsx'
+import Navbar from './Landing/Navbar.jsx';
+import Content from './Landing/Content.jsx';
 
 
 
@@ -22,8 +21,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        <UpperSpace palette={this.state.colorPalette} />
-        <MainSpace onImgME={this.handleImageMouseEnter} onImgML={this.handleImageMouseLeave}/>
+        <Navbar palette={this.state.colorPalette} />
+        <Content onImgME={this.handleImageMouseEnter} onImgML={this.handleImageMouseLeave}/>
       </div>
     );
   }

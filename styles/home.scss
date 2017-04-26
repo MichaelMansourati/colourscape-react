@@ -23,7 +23,7 @@ html, body {
     }
     .ps-cont {
       position: fixed;
-      right: 100px;
+      right: 25vh;
       .ps-form {
         display: flex;
         flex-direction: row;
@@ -33,7 +33,7 @@ html, body {
             outline: none;
           }
           border: none;
-          border-bottom: 1px solid lightgrey;
+          border-bottom: 0.1vh solid lightgrey;
           font-weight: 100;
           font-size: 2vh;
           margin: 1.25vh;
@@ -41,44 +41,51 @@ html, body {
             color: lightgrey;
           }
         }
-        .colorbox {
-          -webkit-appearance: none;
-          padding: 1vh;
-          margin: 1.5vh 0.1vh;
-          outline: none;
-          &:checked {
-
-            border-bottom: 0.2vh solid black;
+        .colorbox-cont {
+          background-color: lightgrey;
+          height: 3vh;
+          margin: 1vh;
+          border-radius: 0.6vh;
+          .colorbox {
+            -webkit-appearance: none;
+            border: 0.2vh solid lightgrey;
+            padding: 1vh;
+            outline: none;
+            border-radius: 0.4vh;
+            &:checked {
+              border: 0.2vh solid black;
+            }
           }
-        }
-        .cb-red {
-          background-color: red;
-        }
-        .cb-orange {
-          background-color: orange;
-        }
-        .cb-yellow {
-          background-color: yellow;
-        }
-        .cb-green {
-          background-color: green;
-        }
-        .cb-blue {
-          background-color: blue;
-        }
-        .cb-purple {
-          background-color: purple;
-        }
-        .cb-white {
-          background-color: white;
-          border: 0.1vh solid black;
-          padding: 0.9vh;
-        }
-        .cb-grey {
-          background-color: grey;
-        }
-        .cb-black {
-          background-color: black;
+          .cb-red {
+            background-color: red;
+          }
+          .cb-orange {
+            background-color: orange;
+          }
+          .cb-yellow {
+            background-color: yellow;
+          }
+          .cb-green {
+            background-color: green;
+          }
+          .cb-blue {
+            background-color: blue;
+          }
+          .cb-purple {
+            background-color: purple;
+          }
+          .cb-white {
+            background-color: white;
+          }
+          .cb-grey {
+            background-color: grey;
+          }
+          .cb-black {
+            background-color: black;
+            &:checked {
+              border: 0.2vh solid white;
+            }
+          }
         }
       }
     }
@@ -110,14 +117,15 @@ html, body {
   }
 }
 
+//\\//\\//\\ C A R D //\\//\\//\\
+
 .card {
-  display: flex;
-  flex-direction: column;
+  position: relative;
   height: 46.75vh;
   margin: 0.5vh 0 0 0.5vh;
   &:hover {
     .author-space {
-      opacity: 0.5;
+      opacity: 1;
     }
     .palette-container {
       opacity: 1;
@@ -136,13 +144,18 @@ html, body {
 
 
   .author-space {
+    padding-top: 1vh;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
     opacity: 0;
+    width: 100%;
+    bottom: 0;
+    margin: 0vh;
     transition: opacity 0.25s;
-    background-color: #7d7d7d;
-    border-radius: 0 0 5px 0;
     position: absolute;
-    padding: 4px;
     .author-name {
+      margin-right: 1vh;
+      float: right;
+      font-size: 2.5vh;
       font-weight: 100;
       color: white;
       font-family: Montserrat;
@@ -152,21 +165,23 @@ html, body {
     height: 100%;
   }
   .palette-container {
+    z-index: 3;
     opacity: 0;
     transition: opacity 0.25s;
     position: relative;
+    display: flex;
     flex-direction: row;
     justify-content: initial;
-    margin-top: -130px;
-    margin-left: 9px;
+    margin-top: -3vh;
+    margin-left: 1vh;
     .color {
       max-height: 25%;
-      height: 30px;
-      width: 30px;
+      height: 2vh;
+      width: 2vh;
     }
     .color-1 {
       background-color: #C12A32;
-      border-radius: 5px 5px 0 0;
+      border-radius: 0.4vh 0 0 0.4vh;
     }
     .color-2 {
       background-color: #7E4125;
@@ -176,7 +191,7 @@ html, body {
     }
     .color-4 {
       background-color: #171311;
-      border-radius: 0 0 5px 5px;
+      border-radius: 0 0.4vh 0.4vh 0;
     }
 
 
