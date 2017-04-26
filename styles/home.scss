@@ -22,8 +22,23 @@ html, body {
       font-size: 3.5vh;
     }
     .ps-cont {
+      display: flex;
+      flex-direction: row;
       position: fixed;
       right: 25vh;
+      .advanced {
+        background-color: white;
+        border: none;
+        margin: 1.3vh 0;
+        height: 2.4vh;
+        border-radius: 0.4vh;
+        &:focus {
+          outline: none;
+        }
+        &:active {
+          background-color: #d3d3d3;
+        }
+      }
       .ps-form {
         display: flex;
         flex-direction: row;
@@ -42,7 +57,6 @@ html, body {
           }
         }
         .colorbox-cont {
-          background-color: lightgrey;
           height: 3vh;
           margin: 1vh;
           border-radius: 0.6vh;
@@ -83,7 +97,7 @@ html, body {
           .cb-black {
             background-color: black;
             &:checked {
-              border: 0.2vh solid white;
+              border: 0.2vh solid red;
             }
           }
         }
@@ -120,7 +134,11 @@ html, body {
 //\\//\\//\\ C A R D //\\//\\//\\
 
 .card {
+  display: flex;
+  flex-direction: column;
   position: relative;
+  width: auto;
+  display: flex;
   height: 46.75vh;
   margin: 0.5vh 0 0 0.5vh;
   &:hover {
@@ -172,12 +190,11 @@ html, body {
     display: flex;
     flex-direction: row;
     justify-content: initial;
-    margin-top: -3vh;
+    margin-top: -2.5vh;
     margin-left: 1vh;
     .color {
-      max-height: 25%;
-      height: 2vh;
-      width: 2vh;
+      height: 1.5vh;
+      width: 3vh;
     }
     .color-1 {
       background-color: #C12A32;
