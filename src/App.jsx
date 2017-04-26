@@ -10,20 +10,33 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      colorPalette: {
-        color1: '#e9e2d0',
-        color2: '#ea9085',
-        color3: '#d45d79',
-        color4: '#6e5773'
-      }
+      colourPalette: {
+        colour1: '#e9e2d0',
+        colour2: '#ea9085',
+        colour3: '#d45d79',
+        colour4: '#6e5773'
+      },
+      colourSelect: []
     }
+    this.handleColourSelect = this.handleColourSelect.bind(this);
   }
+
+  handleColourSelect(event) {
+    const checkedColour = event.target.name
+    let selectedColours = this.state.colourSelect.slice();
+    selectedColours.push(checkedColour);
+
+    this.setState({colourSelect: selectedColours});
+    console.log('selectedColours: ', selectedColours);
+  }
+
+
 
   render() {
     return (
       <div>
-        <UpperSpace palette={this.state.colorPalette} />
-        <MainSpace onImgME={this.handleImageMouseEnter} onImgML={this.handleImageMouseLeave}/>
+        <UpperSpace palette={this.state.colourPalette} colourSelect={this.handleColourSelect} />
+        <MainSpace />
       </div>
     );
   }

@@ -7,7 +7,7 @@ class UpperSpace extends Component {
     return (
       <div className="us-cont">
         <DynamicTitle palette={this.props.palette} />
-        <PlaceSearch />
+        <PlaceSearch colourSelect={this.props.colourSelect} />
       </div>
     )
   }
