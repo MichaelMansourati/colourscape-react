@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-
 import Navbar from './Landing/Navbar.jsx';
 import Content from './Landing/Content.jsx';
+
 
 
 class App extends Component {

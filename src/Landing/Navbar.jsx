@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import DynamicTitle from './UpperSpace/DynamicTitle.jsx'
-import PlaceSearch from './UpperSpace/PlaceSearch.jsx'
+import DynamicTitle from './Navbar/DynamicTitle.jsx'
+import PlaceSearch from './Navbar/PlaceSearch.jsx'
 
 class Navbar extends Component {
   render() {
