@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import DynamicTitle from './UpperSpace/DynamicTitle.jsx'
-import PlaceSearch from './UpperSpace/PlaceSearch.jsx'
+import DynamicTitle from './Navbar/DynamicTitle.jsx'
+import PlaceSearch from './Navbar/PlaceSearch.jsx'
 
-class UpperSpace extends Component {
+class Navbar extends Component {
   render() {
     return (
       <div className="us-cont">
@@ -12,4 +12,4 @@ class UpperSpace extends Component {
     )
   }
 }
-export default UpperSpace;
+export default Navbar;

@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import TopRow from './MainSpace/TopRow.jsx';
-import BottomRow from './MainSpace/BottomRow.jsx';
+import TopRow from './Content/TopRow.jsx';
+import BottomRow from './Content/BottomRow.jsx';
 
-class MainSpace extends Component {
+class Content extends Component {
   render() {
     return(
       <div className="ms-cont">
@@ -12,4 +12,4 @@ class MainSpace extends Component {
     )
   }
 }
-export default MainSpace;
+export default Content;
