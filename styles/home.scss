@@ -56,11 +56,11 @@ html, body {
             color: lightgrey;
           }
         }
-        .colourbox-cont {
+        .colorbox-cont {
           height: 3vh;
           margin: 1vh;
           border-radius: 0.6vh;
-          .colourbox {
+          .colorbox {
             -webkit-appearance: none;
             border: 0.2vh solid lightgrey;
             padding: 1vh;
@@ -195,21 +195,21 @@ html, body {
     justify-content: initial;
     margin-top: -2.5vh;
     margin-left: 1vh;
-    .colour {
+    .color {
       height: 1.5vh;
       width: 3vh;
     }
-    .colour-1 {
+    .color-1 {
       background-color: #C12A32;
       border-radius: 0.4vh 0 0 0.4vh;
     }
-    .colour-2 {
+    .color-2 {
       background-color: #7E4125;
     }
-    .colour-3 {
+    .color-3 {
       background-color: #CF9B71;
     }
-    .colour-4 {
+    .color-4 {
       background-color: #171311;
       border-radius: 0 0.4vh 0.4vh 0;
     }
