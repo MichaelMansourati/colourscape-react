@@ -18,7 +18,7 @@ module.exports = {
         test: /\.json$/,
         use: 'json-loader'
       }
-    ]
+    ],
     loaders: [
       {
         test: /\.jsx?$/,
