@@ -2,7 +2,11 @@ import React, {Component} from 'react';
 import Navbar from './Landing/Navbar.jsx';
 import Content from './Landing/Content.jsx';
 
-
+/*
+ note to self: img information needs to be restyled
+ in consideration of narrow images.
+...consider fucking with vw????? may not be enough
+*/
 
 class App extends Component {
 
