@@ -147,6 +147,7 @@ html, body {
   &:hover {
     .author-space {
       opacity: 1;
+
     }
     .palette-container {
       opacity: 1;
@@ -200,17 +201,10 @@ html, body {
       width: 3vh;
     }
     .color-1 {
-      background-color: #C12A32;
       border-radius: 0.4vh 0 0 0.4vh;
     }
-    .color-2 {
-      background-color: #7E4125;
-    }
-    .color-3 {
-      background-color: #CF9B71;
-    }
+
     .color-4 {
-      background-color: #171311;
       border-radius: 0 0.4vh 0.4vh 0;
     }
 
