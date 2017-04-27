@@ -65,9 +65,11 @@ html, body {
             border: 0.2vh solid lightgrey;
             padding: 1vh;
             outline: none;
-            border-radius: 0.4vh;
             &:checked {
               border: 0.2vh solid black;
+            }
+            &:disabled {
+              opacity: 0.25;
             }
           }
           .cb-red {
@@ -201,7 +203,6 @@ html, body {
     }
     .color-1 {
       background-color: #C12A32;
-      border-radius: 0.4vh 0 0 0.4vh;
     }
     .color-2 {
       background-color: #7E4125;
@@ -211,7 +212,6 @@ html, body {
     }
     .color-4 {
       background-color: #171311;
-      border-radius: 0 0.4vh 0.4vh 0;
     }
 
 
