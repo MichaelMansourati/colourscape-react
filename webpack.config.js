@@ -13,6 +13,12 @@ module.exports = {
     publicPath: '/build/'
   },
   module: {
+    rules: [
+      {
+        test: /\.json$/,
+        use: 'json-loader'
+      }
+    ]
     loaders: [
       {
         test: /\.jsx?$/,
