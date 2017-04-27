@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import UpperSpace         from './Spaces/UpperSpace.jsx';
-import MainSpace          from './Spaces/MainSpace.jsx';
+import Navbar             from './Landing/Navbar.jsx';
+import Content            from './Landing/Content.jsx';
 
 
 class App extends Component {
@@ -70,8 +70,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        <UpperSpace palette={this.state.colourPalette} colourSelect={this.handleColourSelect} disableColours={this.state.disableColours} />
-        <MainSpace />
+        <Navbar palette={this.state.colourPalette} colourSelect={this.handleColourSelect} disableColours={this.state.disableColours} />
+        <Content />
       </div>
     );
   }
