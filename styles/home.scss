@@ -43,6 +43,7 @@ html, body {
         display: flex;
         flex-direction: row;
         height: 5vh;
+        padding: 0 15px 0 10px;
         input.ps-searchbar {
           &:focus {
             outline: none;
@@ -65,9 +66,12 @@ html, body {
             border: 0.2vh solid lightgrey;
             padding: 1vh;
             outline: none;
-            border-radius: 0.4vh;
+            border-radius:15px;
             &:checked {
               border: 0.2vh solid black;
+            }
+            &:disabled {
+              opacity: 0.25;
             }
           }
           .cb-red {
@@ -160,8 +164,8 @@ html, body {
     float: right;
     height: 5%;
     width: auto;
-    bottom: 9px;
-    right: 5px;
+    bottom: 6px;
+    left: 8px;
   }
 
 
@@ -181,6 +185,8 @@ html, body {
       font-weight: 100;
       color: white;
       font-family: Montserrat;
+      width: 40%;
+      text-align: right;
     }
   }
   .the-goods {
@@ -200,13 +206,7 @@ html, body {
       height: 1.5vh;
       width: 3vh;
     }
-    .color-1 {
-      border-radius: 0.4vh 0 0 0.4vh;
-    }
 
-    .color-4 {
-      border-radius: 0 0.4vh 0.4vh 0;
-    }
 
 
   }

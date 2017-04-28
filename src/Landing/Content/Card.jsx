@@ -6,10 +6,10 @@ class Card extends Component {
 
   render() {
     var c = this.props.colors
-    let person = this.props.photographer
-    console.log(person)
-    if(person == "")
-      person = "Anonymous"
+    let place = this.props.area
+    console.log(place)
+    if(place == "")
+      place = "Unknown"
     return(
       <div className="card">
         <img className="the-goods" src={this.props.url}/>
@@ -18,10 +18,10 @@ class Card extends Component {
           <div className="color" style={{backgroundColor: c[1]}}></div>
           <div className="color" style={{backgroundColor: c[2]}}></div>
           <div className="color color-4" style={{backgroundColor: c[3]}}></div>
-          <footer><i className="fa fa-heart-o"></i></footer>
+          <footer><i className="fa fa-heart-o fa-2x"></i></footer>
         </div>
         <div className="author-space">
-          <span className="author-name">{person}</span>
+          <span className="author-name">{place}</span>
         </div>
       </div>
     )
