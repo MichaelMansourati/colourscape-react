@@ -1,0 +1,57 @@
+.db-cont {
+  z-index: -1;
+  margin-top: 5vh;
+  display: flex;
+  position: absolute;
+  height: 95vh;
+  width: 100vw;
+  .content-cont {
+    position: absolute;
+    flex: 6;
+    width: 59vw;
+    margin: 0.5vw 0.5vw 0 0.5vw;
+    display: flex;
+    flex-direction: column;
+
+    .infoCard {
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      height: auto;
+      justify-content: flex-start;
+      align-items: stretch;
+      padding-bottom: 0.5vw;
+      img {
+        width: 60%;
+        height: 60%;
+      }
+      .info-cont {
+        padding-left: 1vh;
+        width: 40%;
+        background-color: white;
+        .info-titles {
+          font-weight: 400;
+          font-size: 2vmin;
+        }
+        span {
+          font-weight: 300;
+          font-size: 2vmin;
+        }
+      }
+    }
+  }
+  .sidebar {
+    position: fixed;
+    right: 0;
+    height: 95vh;
+    width: 40vw;
+    flex: 4;
+    background-color: white;
+    box-shadow: 0 0px 0.5vh 0 #3a3a3a;
+    .gmap-cont {
+      height: 40vh;
+      margin: 2vh;
+      background-color: lightblue;
+    }
+  }
+}

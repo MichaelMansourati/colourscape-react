@@ -119,13 +119,14 @@ class App extends Component {
     console.log("trueColors: ", trueColors, "Request Array: ", colReqArr);
   }
 
-
+  //<Content />
 
   render() {
     return (
       <div>
         <Navbar palette={this.state.colorPalette} colorSelect={this.handleColorSelect} disableColors={this.state.disableColors} />
         <Content imgData={this.state.imgData} />
+        // <Dashboard />
       </div>
     );
   }
