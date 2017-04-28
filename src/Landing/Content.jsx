@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import imgData from './imgdata.js';
 import TopRow from './Content/TopRow.jsx';
 import BottomRow from './Content/BottomRow.jsx';
 
@@ -8,6 +7,7 @@ class Content extends Component {
     var top = []
     var bottom = []
     var counter = 0
+    var imgData = this.props.imgData
     for (var data in imgData){
       if (counter % 2 == 0 ){
         bottom.push(imgData[data])

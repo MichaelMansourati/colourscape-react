@@ -149,12 +149,12 @@ html, body {
   height: 46.75vh;
   margin: 0.5vh 0 0 0.5vh;
   &:hover {
-    .author-space {
-      opacity: 1;
+    .tag-space {
+      opacity: 1 !important;
 
     }
     .palette-container {
-      opacity: 1;
+      opacity: 1 !important;
     }
   }
 
@@ -162,14 +162,13 @@ html, body {
     color: white;
     position: relative;
     float: right;
-    height: 5%;
-    width: auto;
-    bottom: 6px;
-    left: 8px;
+    bottom: 2px;
+    font-size: 25px !important;
+    padding-left: 15px;
   }
 
 
-  .author-space {
+  .tag-space {
     padding-top: 1vh;
     background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
     opacity: 0;
@@ -178,15 +177,20 @@ html, body {
     margin: 0vh;
     transition: opacity 0.25s;
     position: absolute;
-    .author-name {
+    display: flex;
+    flex-direction: row;
+    justify-content: initial;
+    .location {
       margin-right: 1vh;
-      float: right;
-      font-size: 2.5vh;
+      float: left;
+      font-size: 2vh;
       font-weight: 100;
       color: white;
       font-family: Montserrat;
       width: 40%;
-      text-align: right;
+      text-align: left;
+      padding: 0 0 6px 10px;
+
     }
   }
   .the-goods {
@@ -196,12 +200,13 @@ html, body {
     z-index: 3;
     opacity: 0;
     transition: opacity 0.25s;
-    position: relative;
+    position: absolute;
     display: flex;
+    right: 1vh;
     flex-direction: row;
-    justify-content: initial;
-    margin-top: -2.5vh;
+    justify-content: flex-end;
     margin-left: 1vh;
+    bottom: 1vh;
     .color {
       height: 1.5vh;
       width: 3vh;
