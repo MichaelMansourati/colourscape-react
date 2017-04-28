@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Navbar from './Landing/Navbar.jsx';
 import Content from './Landing/Content.jsx';
 import imgData from './Landing/imgdata.js';
-
+import Dashboard from './Dashboard/Dashboard.jsx'
 /*
  note to self: img information needs to be restyled
  in consideration of narrow images.
@@ -119,14 +119,13 @@ class App extends Component {
     console.log("trueColors: ", trueColors, "Request Array: ", colReqArr);
   }
 
-  //<Content />
 
   render() {
+        // <Dashboard />
     return (
       <div>
         <Navbar palette={this.state.colorPalette} colorSelect={this.handleColorSelect} disableColors={this.state.disableColors} />
         <Content imgData={this.state.imgData} />
-        // <Dashboard />
       </div>
     );
   }
