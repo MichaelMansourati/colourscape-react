@@ -7,8 +7,9 @@ class TopRow extends Component {
     return(
       <div className="tr-cont">
        {
-        arr.map((i) => {
-         return ( <Card url={i.url} key={arr.indexOf(i)}/> )
+          arr.map((i) => {
+            var nghbrhd = i.geo.neighbourhood
+            return ( <Card url={i.url} key={arr.indexOf(i)} colors = {i.colArr} area={nghbrhd}/> )
           })
         }
       </div>
