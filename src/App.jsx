@@ -2,12 +2,8 @@ import React, {Component} from 'react';
 import Navbar from './Landing/Navbar.jsx';
 import Content from './Landing/Content.jsx';
 import imgData from './Landing/imgdata.js';
-import Dashboard from './Dashboard/Dashboard.jsx'
-/*
- note to self: img information needs to be restyled
- in consideration of narrow images.
-...consider fucking with vw????? may not be enough
-*/
+import Dashboard from './Dashboard/Dashboard.jsx';
+
 
 class App extends Component {
 
@@ -127,11 +123,12 @@ class App extends Component {
 
 
   render() {
-        // <Dashboard />
+    // <Content imgData={this.state.imgData} />
+        //
     return (
       <div>
         <Navbar palette={this.state.colorPalette} colorSelect={this.handleColorSelect} disableColors={this.state.disableColors} />
-        <Content imgData={this.state.imgData} />
+        <Dashboard />
       </div>
     );
   }
