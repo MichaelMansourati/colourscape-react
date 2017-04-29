@@ -3,6 +3,7 @@ import Navbar from './Landing/Navbar.jsx';
 import Content from './Landing/Content.jsx';
 import imgData from './Landing/imgdata.js';
 import Dashboard from './Dashboard/Dashboard.jsx';
+import infoContent from './Dashboard/Content/infoContent.js'
 
 
 class App extends Component {
@@ -18,7 +19,7 @@ class App extends Component {
       var colArr = [c1, c2, c3, c4]
       imgData[i].colArr = colArr
     }
-    console.log(imgData)
+    //console.log(imgData)
     this.state = {
       colorPalette: {
         color1: 'rgb(255, 255, 255)',
@@ -45,7 +46,8 @@ class App extends Component {
         place3: {lat: 43.639429, lon: -79.412441},
         place4: {lat: 43.637383, lon: -79.424779}
       },
-      imgData: imgData
+      imgData: imgData,
+      infoContent: infoContent
     }
     this.handleColorSelect = this.handleColorSelect.bind(this);
   }
@@ -71,7 +73,7 @@ class App extends Component {
       }
     }
 
-    console.log(`True: ${trueColors}, False: ${falseColors}`)
+    //console.log(`True: ${trueColors}, False: ${falseColors}`)
 
     if (trueColors.length == 4) {
       // console.log('at color max');
@@ -118,17 +120,17 @@ class App extends Component {
           break
       }
     }
-    console.log("trueColors: ", trueColors, "Request Array: ", colReqArr);
+    //console.log("trueColors: ", trueColors, "Request Array: ", colReqArr);
   }
 
 
   render() {
     // <Content imgData={this.state.imgData} />
-        //
+    // <Dashboard infoContent={this.state.infoContent} />
     return (
       <div>
         <Navbar palette={this.state.colorPalette} colorSelect={this.handleColorSelect} disableColors={this.state.disableColors} />
-        <Dashboard />
+        <Dashboard infoContent={this.state.infoContent} />
       </div>
     );
   }

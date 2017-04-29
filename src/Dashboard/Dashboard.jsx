@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import InfoCard from './Content/InfoCard.jsx';
+import InfoContainer from './Content/InfoContainer.jsx';
 import GMap from './Content/GMap.jsx';
 import Suggests from './Content/Suggests.jsx';
 
@@ -9,7 +9,7 @@ class Dashboard extends Component {
     return(
       <div className="db-cont">
         <div className="content-cont">
-          <InfoCard />
+          <InfoContainer infoContent={this.props.infoContent} />
         </div>
         <div className="sidebar">
           <GMap google={window.google} />
