@@ -6,36 +6,26 @@
   height: 95vh;
   width: 100vw;
   .content-cont {
-    position: absolute;
-    flex: 6;
-    width: 59vw;
+    width: 49vw;
     margin: 0.5vw 0.5vw 0 0.5vw;
-    display: flex;
-    flex-direction: column;
-
     .infoCard {
-      position: relative;
       display: flex;
-      flex-direction: row;
-      height: auto;
-      justify-content: flex-start;
-      align-items: stretch;
       padding-bottom: 0.5vw;
       img {
-        width: 60%;
-        height: 60%;
+        width: 75%;
+        height: 75%;
       }
       .info-cont {
         padding-left: 1vh;
-        width: 40%;
+        width: 25%;
         background-color: white;
         .info-titles {
-          font-weight: 400;
-          font-size: 2vmin;
+          font-weight: 400;//remove line breaks, define margins in vw
+          font-size: 1.2vw;
         }
-        span {
+        p {
           font-weight: 300;
-          font-size: 2vmin;
+          font-size: 1vw;
         }
       }
     }
@@ -43,15 +33,58 @@
   .sidebar {
     position: fixed;
     right: 0;
-    height: 95vh;
-    width: 40vw;
-    flex: 4;
+    height: 100%;
+    width: 49.5vw;
     background-color: white;
-    box-shadow: 0 0px 0.5vh 0 #3a3a3a;
+    padding-bottom: 0.5vw;
+    margin: 0.5vw 0.5vw 0.5vw 0.5vw;
+    overflow-y: scroll;
     .gmap-cont {
-      height: 40vh;
+      height: 50vh;
       margin: 2vh;
       background-color: lightblue;
     }
+    .suggests-cont {
+      width: 48.5vw;
+      margin: 0 0.5vw;
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+      .suggestion {
+        margin: 0 auto;
+        position: relative;
+        font-size: 3vh;
+        font-weight: 300;
+        height: 3.5vh;
+        font-style: italic;
+        margin-bottom: 5vh;
+      }
+      .circle-row {
+        position: relative;
+        width: 98%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+      }
+      .circle {
+        position: relative;
+        display: flex;
+        align-items: center;
+        height: 27vh;
+        width: 27vh;
+        border-radius: 15vh;
+        background-color: pink;
+        .centering-div {
+          margin: 0 auto;
+          .place-to-go {
+            font-weight: 400;
+            font-size: 1.7vh;
+            display: flex;
+
+          }
+        }
+      }
+    }
   }
 }
+

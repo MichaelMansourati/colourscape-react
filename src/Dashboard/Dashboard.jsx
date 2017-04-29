@@ -12,7 +12,7 @@ class Dashboard extends Component {
           <InfoCard />
         </div>
         <div className="sidebar">
-          <GMap />
+          <GMap google={window.google} />
           <Suggests />
         </div>
       </div>
