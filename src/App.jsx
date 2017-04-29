@@ -43,6 +43,12 @@ class App extends Component {
         white:  false
       },
       disableColors: {},
+      locations: {
+        place1: {lat: 43.639429, lon: -79.412441},
+        place2: {lat: 43.639429, lon: -79.412441},
+        place3: {lat: 43.639429, lon: -79.412441},
+        place4: {lat: 43.637383, lon: -79.424779}
+      },
       imgData: imgData
     }
     this.handleColorSelect = this.handleColorSelect.bind(this);
