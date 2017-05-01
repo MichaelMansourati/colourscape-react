@@ -47,11 +47,22 @@ class App extends Component {
         place4: {lat: 43.637383, lon: -79.424779}
       },
       imgData: imgData,
-      infoContent: infoContent
+      infoContent: infoContent,
+      hoveredInfoCard: -1
     }
     this.handleColorSelect = this.handleColorSelect.bind(this);
+    this.handleInfoCardME  = this.handleInfoCardME.bind(this);
+    this.handleInfoCardML  = this.handleInfoCardML.bind(this);
   }
 
+  handleInfoCardME(event) {
+    const enteredCard = event.target.parentNode.id;
+    this.setState({hoveredInfoCard: enteredCard})
+  }
+
+  handleInfoCardML(event) {
+    this.setState({hoveredInfoCard: -1})
+  }
 
   handleColorSelect(event) {
     const checkedColor = event.target.name;
@@ -125,12 +136,22 @@ class App extends Component {
 
 
   render() {
+    //console.log(this.state.infoContent);
     // <Content imgData={this.state.imgData} />
     // <Dashboard infoContent={this.state.infoContent} />
     return (
       <div>
-        <Navbar palette={this.state.colorPalette} colorSelect={this.handleColorSelect} disableColors={this.state.disableColors} />
-        <Dashboard infoContent={this.state.infoContent} />
+        <Navbar
+        palette={this.state.colorPalette}
+        colorSelect={this.handleColorSelect}
+        disableColors={this.state.disableColors}
+        />
+        <Dashboard
+        infoContent={this.state.infoContent}
+        InfoCardME={this.handleInfoCardME}
+        InfoCardML={this.handleInfoCardML}
+        hoveredInfoCard={this.state.hoveredInfoCard}
+        />
       </div>
     );
   }

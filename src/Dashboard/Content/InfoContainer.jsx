@@ -8,18 +8,21 @@ class InfoContainer extends Component {
       <div>
         {
           infoArr.map((i) => {
-            console.log(i);
-            const nghbrhd = i.neighbourhood;
+            if (i.photog == '') {
+              i.photog = 'n/a';
+            }
             return(
               <InfoCard
               key={infoArr.indexOf(i)}
+              id={infoArr.indexOf(i)}
               image={i.url}
               photog={i.photog}
-              lat={i.lat}
-              lon={i.lon}
               area={i.neighbourhood}
+              city={i.locality}
               views={i.views}
-              city={i.locality} />
+              InfoCardME={this.props.InfoCardME}
+              InfoCardML={this.props.InfoCardML}
+              />
             )
           })
         }
