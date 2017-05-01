@@ -8,14 +8,29 @@ class Gmap extends Component {
     zoom: 13
   };
 
-
   render() {
+    const infoArr = this.props.infoContent
     return(
       <div className="gmap-cont">
         <GoogleMapReact defaultCenter={this.props.center} defaultZoom={this.props.zoom}>
-          <div className="map-marker" lat={43.65} lng={-79.38}  text={'Kreyser Avrora'}>
-            <i className="fa fa-camera-retro 4x" aria-hidden="true"></i>
-          </div>
+        {
+          infoArr.map((i) => {
+            if (this.props.hIC == infoArr.indexOf(i)) {
+              return(
+                <div key={infoArr.indexOf(i)} lat={i.lat} lng={i.lon} >
+                  <i className="fa fa-camera-retro fa-2x" aria-hidden="true"></i>
+                </div>
+              )
+            } else {
+              return(
+                <div key={infoArr.indexOf(i)} lat={i.lat} lng={i.lon} >
+                  <i className="fa fa-camera-retro" aria-hidden="true"></i>
+                </div>
+              )
+            }
+
+          })
+        }
         </GoogleMapReact>
       </div>
     )
