@@ -80,16 +80,27 @@
         height: 27vh;
         width: 27vh;
         border-radius: 15vh;
-        background-color: pink;
+        background-size: auto 27vh;
+        color: white;
         .centering-div {
           margin: 0 auto;
           .place-to-go {
             font-weight: 400;
-            font-size: 1.7vh;
+            font-style: italic;
+            font-size: 2vh;
             display: flex;
-
+            text-shadow: 0 0.5vh 0.5vh black;
           }
         }
+      }
+      .circle-1 {
+        background-image: url('http://www.thedistillerydistrict.com/images/img_8524-edit.jpg?crc=3920880459');
+      }
+      .circle-2 {
+        background-image: url('http://www.blueelephantrealty.com/wp-content/uploads/2016/06/trinity-bellwoods-park-toronto-real-estate.jpg');
+      }
+      .circle-3 {
+        background-image: url('http://libeskind.com/wp-content/uploads/rom-2280x1564.jpg');
       }
     }
   }
