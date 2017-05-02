@@ -2,13 +2,8 @@ import React, {Component} from 'react';
 import Navbar from './Landing/Navbar.jsx';
 import Content from './Landing/Content.jsx';
 import imgData from './Landing/imgdata.js';
-import Dashboard from './Dashboard/Dashboard.jsx'
-/*
- Michael:
- note to self: img information needs to be restyled
- in consideration of narrow images.
-...consider fucking with vw????? may not be enough
-*/
+import Dashboard from './Dashboard/Dashboard.jsx';
+import infoContent from './Dashboard/Content/infoContent.js'
 
 /*
   Suraj:
@@ -19,15 +14,11 @@ import Dashboard from './Dashboard/Dashboard.jsx'
 
   User query being buildon component
 */
-// let savePrevSt = {}
-// let BASE = `http://localhost:8005`
+
 class App extends Component {
   constructor() {
     super();
 
-    /*
-      CURRENT_USER to be replaced with user tolkens to implement in usersdb
-      */
     this.state = {
       colorPalette: {
         color1: 'rgb(255, 255, 255)',
@@ -53,22 +44,21 @@ class App extends Component {
       color:    false,
       location: false,
       loading:  false,
+      locations: {
+        place1: {lat: 43.639429, lon: -79.412441},
+        place2: {lat: 43.639429, lon: -79.412441},
+        place3: {lat: 43.639429, lon: -79.412441},
+        place4: {lat: 43.637383, lon: -79.424779}
+      },
+      imgData: imgData,
+      infoContent: infoContent,
+      hoveredInfoCard: -1
     }
 
     this.handleColorSelect = this.handleColorSelect.bind(this);
+    this.handleInfoCardME  = this.handleInfoCardME.bind(this);
+    this.handleInfoCardML  = this.handleInfoCardML.bind(this);
   }
-
-  // shouldComponentUpdate(nextProps, nextState) {
-
-  //   let x = nextState
-  //   console.log(`Should look for color: ${x.color} location: ${x.location}\nparams:${nextState.queryParams}`)
-  //   console.log(x)
-  //   /*
-  //     Fetch resets query params to be '' after complete, and query will set when query has been updated with respect to state
-  //   */
-  //   return (nextState.queryParams != this.state.queryParams)
-
-  // }
 
 
   componentDidUpdate(prevProps, prevState){
@@ -102,17 +92,7 @@ class App extends Component {
     event.preventDefault()
       var loc = event.target.value
       console.log(loc)
-      /*
-        Implementing location querying separate (loc first then color right now)
-        (location) ? :
-      if (this.state.color){
-          this.setState({
-          location: true,
-          loading:  true,
-          queryParams: `${queryParams}&location=${loc}`
-        })
-      }
-      */
+
       this.setState({
         location: true,
         loading:  true,
@@ -135,6 +115,14 @@ class App extends Component {
         console.log("Successfully posted favourite")
       }
     })
+
+  handleInfoCardME(event) {
+    const enteredCard = event.target.parentNode.id;
+    this.setState({hoveredInfoCard: enteredCard})
+  }
+
+  handleInfoCardML(event) {
+    this.setState({hoveredInfoCard: -1})
   }
 
   handleColorSelect(event) {
@@ -156,8 +144,6 @@ class App extends Component {
         falseColors.push(color);
       }
     }
-
-    // console.log(`True: ${trueColors}, False: ${falseColors}`)
 
     if (trueColors.length == 4) {
       // console.log('at color max');
@@ -219,6 +205,7 @@ class App extends Component {
           break
       }
     }
+
     var colors = {}
     let colQuery = ''
     for(var j in colReqArr){
@@ -259,20 +246,26 @@ class App extends Component {
 
 
   render() {
-    // <Dashboard />
     var check = this.state.location || this.state.color
     console.log("Query selected:", check)
     /*
       Do not re-render if location and color have been selected
       re-render will be reset after fetch is called
+      
+      Dashboard component:
+        <Dashboard
+        infoContent={this.state.infoContent}
+        InfoCardME={this.handleInfoCardME}
+        InfoCardML={this.handleInfoCardML}
+        hoveredInfoCard={this.state.hoveredInfoCard}
+        /> 
     */
-      return (
-        <div>
-          <Navbar palette={this.state.colorPalette} colorSelect={this.handleColorSelect.bind(this)} disableColors={this.state.disableColors} placeSearch={this.handlePlaceSearch.bind(this)} loading={this.state.loading}/>
-          <Content imgData={this.state.imgData} clickLike={this.handleLikeImage.bind(this.props.id)}/>
-        </div>
-      );
-
+    return (
+      <div>
+        <Navbar palette={this.state.colorPalette} colorSelect={this.handleColorSelect.bind(this)} disableColors={this.state.disableColors} placeSearch={this.handlePlaceSearch.bind(this)} loading={this.state.loading}/>
+        <Content imgData={this.state.imgData} clickLike={this.handleLikeImage.bind(this.props.id)}/>
+      </div>
+    );
   }
 }
 export default App;
