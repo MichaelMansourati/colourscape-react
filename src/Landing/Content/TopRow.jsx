@@ -9,7 +9,7 @@ class TopRow extends Component {
        {
           arr.map((i) => {
             var nghbrhd = i.neighbourhood
-            return ( <Card url={i.url} key={arr.indexOf(i)} colors = {i.colArr} area={nghbrhd}/> )
+            return ( <Card url={i.url} key={arr.indexOf(i)} colors = {i.colArr} area={nghbrhd} clickLike={this.props.clickLike} id={i.id}/> )
           })
         }
       </div>

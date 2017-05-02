@@ -25,14 +25,14 @@ class App extends Component {
   constructor() {
     super();
     // Massage data from first call into string
-    for(var i in imgData) {
+    /*for(var i in imgData) {
       var c1 = `rgb(${imgData[i].c1.red}, ${imgData[i].c1.green}, ${imgData[i].c1.blue})`
       var c2 = `rgb(${imgData[i].c2.red}, ${imgData[i].c2.green}, ${imgData[i].c2.blue})`
       var c3 = `rgb(${imgData[i].c3.red}, ${imgData[i].c3.green}, ${imgData[i].c3.blue})`
       var c4 = `rgb(${imgData[i].c4.red}, ${imgData[i].c4.green}, ${imgData[i].c4.blue})`
       var colArr = [c1, c2, c3, c4]
       imgData[i].colArr = colArr
-    }
+    }*/
     // console.log(imgData)
     this.state = {
       colorPalette: {
@@ -60,64 +60,76 @@ class App extends Component {
       location: false,
       loading:  false
     }
+
     this.handleColorSelect = this.handleColorSelect.bind(this);
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
+  // shouldComponentUpdate(nextProps, nextState) {
 
-    let x = this.state
-    console.log("shouldUpdate:", x.color || x.location)
+  //   let x = nextState
+  //   console.log(`Should look for color: ${x.color} location: ${x.location}\nparams:${nextState.queryParams}`)
+  //   console.log(x)
+  //   /*
+  //     Fetch resets query params to be '' after complete, and query will set when query has been updated with respect to state
+  //   */
+  //   return (nextState.queryParams != this.state.queryParams)
 
-    // If component is in the middle of a fetch, do not update componentDidUpdate
+  // }
 
-    return !this.state.loading
-
-  }
-
-  componentWillUpdate(nextProps, nextState) {
-    this.setState({loading: true})
-    fetch(`http://localhost:8005/`)
-    .then((response) => {
-      console.log( response )
-      response.clone().json()
-      .then((ans) => {
-        console.log(ans)
-      })
-      .catch(function() {
-        return response.text()
-      })
-    })
-  }
 
   componentDidUpdate(prevProps, prevState){
+    console.log("Updated Props")
+    console.log(this.state)
+    if (this.state.queryParams != prevState.queryParams) {
+
+      fetch(`http://localhost:8005/${this.state.queryParams}`)
+      .then((response) => {
+        response.clone().json()
+         .then((ans) => {
+          console.log(ans.body)
+
+          this.setState({
+            imgData:  ans.body,
+            loading:  false
+          })
+         })
+         .catch(function() {
+          return response.text()
+         })
+      })
+    }
+
 
 
   }
 
   handlePlaceSearch(event){
     if(event.charCode === 13){
+    event.preventDefault()
       var loc = event.target.value
       console.log(loc)
       /*
         Implementing location querying separate (loc first then color right now)
         (location) ? :
-      */
-
       if (this.state.color){
           this.setState({
           location: true,
+          loading:  true,
           queryParams: `${queryParams}&location=${loc}`
-
         })
       }
-      else{
-        this.setState({
-          location: true,
-          queryParams: `?location=${loc}`
-        })
-      }
+      */
+      this.setState({
+        location: true,
+        loading:  true,
+        queryParams: `geo/${loc}`
+      })
 
     }
+  }
+
+  handleLikeImage(event, id) {
+    console.log(event.target)
   }
 
   handleColorSelect(event) {
@@ -213,27 +225,30 @@ class App extends Component {
 
     var i = colReqArr[0]
 
-    if(!this.state.color){
-      //haven't clicked a query parameter yet
-      colQuery = `[[${i.r.join(',')}],[${i.g.join(',')}],[${i.b.join(',')}]]`
-    }
+
     for(var k = 4; k > colReqArr.length; k--){
       colors[`color${k}`] = 'rbg(255, 255, 255)'
     }
+    console.log("Color Select ignored:", this.state.color)
     if(!this.state.color){
+      colQuery = `[[${i.r.join(',')}],[${i.g.join(',')}],[${i.b.join(',')}]]`
 
-      (this.state.location)
-        ? this.setState({
+      if (this.state.location){
+        console.log("Location is selected")
+        this.setState({
           color: true,
           colorPalette: colors,
           queryParams: `${queryParams}&color=${colQuery}`
-        })
-        : this.setState({
+       })
+      }
+      else{
+        console.log("Location not selected")
+        this.setState({
           color: true,
           colorPalette: colors,
-          queryParams: `?color=${colQuery}`
-
+          queryParams: `palette?colQuery=${colQuery}`
         })
+      }
     }
   }
 
@@ -246,23 +261,13 @@ class App extends Component {
       Do not re-render if location and color have been selected
       re-render will be reset after fetch is called
     */
-    // if(!check){
       return (
         <div>
           <Navbar palette={this.state.colorPalette} colorSelect={this.handleColorSelect.bind(this)} disableColors={this.state.disableColors} placeSearch={this.handlePlaceSearch.bind(this)} loading={this.state.loading}/>
-          <Content imgData={this.state.imgData} />
+          <Content imgData={this.state.imgData} clickLike={this.handleLikeImage.bind(this.props.id)}/>
         </div>
       );
-    /* }
-    else{
 
-      return (<div>
-        savePrevSt
-        <Navbar palette={this.state.colorPalette} colorSelect={this.handleColorSelect.bind(this)} disableColors={this.state.disableColors} placeSearch={this.handlePlaceSearch.bind(this)} loading={savePrevSt.loading}/>
-        <Content imgData={savePrevSt.imgData} />
-      </div>)
-
-    }*/
   }
 }
 export default App;

@@ -16,12 +16,12 @@ class Card extends Component {
         <div className="tag-space">
           <span className="location">{place}</span>
           <div className="palette-container">
-          <div className="color color-1" style={{backgroundColor: c[0]}}></div>
-          <div className="color" style={{backgroundColor: c[1]}}></div>
-          <div className="color" style={{backgroundColor: c[2]}}></div>
-          <div className="color color-4" style={{backgroundColor: c[3]}}></div>
-          <i className="fa fa-heart-o fa-2x"></i>
-        </div>
+            <div className="color color-1" style={{backgroundColor: c[0]}}></div>
+            <div className="color" style={{backgroundColor: c[1]}}></div>
+            <div className="color" style={{backgroundColor: c[2]}}></div>
+            <div className="color color-4" style={{backgroundColor: c[3]}}></div>
+            <i className="fa fa-heart-o fa-2x" onClick={this.props.clickLike} id={this.props.id}></i>
+          </div>
         </div>
       </div>
     )
