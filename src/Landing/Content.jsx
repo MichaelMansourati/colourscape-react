@@ -16,7 +16,6 @@ class Content extends Component {
       var c4 = `rgb(${imgData[i].red4}, ${imgData[i].green4}, ${imgData[i].blue4})`
       var colArr = [c1, c2, c3, c4]
       imgData[i].colArr = colArr
-      console.log(imgData[i])
 
 
       if (counter % 2 == 1 ){

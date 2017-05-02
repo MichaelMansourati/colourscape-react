@@ -24,16 +24,10 @@ import Dashboard from './Dashboard/Dashboard.jsx'
 class App extends Component {
   constructor() {
     super();
-    // Massage data from first call into string
-    /*for(var i in imgData) {
-      var c1 = `rgb(${imgData[i].c1.red}, ${imgData[i].c1.green}, ${imgData[i].c1.blue})`
-      var c2 = `rgb(${imgData[i].c2.red}, ${imgData[i].c2.green}, ${imgData[i].c2.blue})`
-      var c3 = `rgb(${imgData[i].c3.red}, ${imgData[i].c3.green}, ${imgData[i].c3.blue})`
-      var c4 = `rgb(${imgData[i].c4.red}, ${imgData[i].c4.green}, ${imgData[i].c4.blue})`
-      var colArr = [c1, c2, c3, c4]
-      imgData[i].colArr = colArr
-    }*/
-    // console.log(imgData)
+
+    /*
+      CURRENT_USER to be replaced with user tolkens to implement in usersdb
+      */
     this.state = {
       colorPalette: {
         color1: 'rgb(255, 255, 255)',
@@ -58,7 +52,7 @@ class App extends Component {
       queryParams: '',
       color:    false,
       location: false,
-      loading:  false
+      loading:  false,
     }
 
     this.handleColorSelect = this.handleColorSelect.bind(this);
@@ -129,7 +123,18 @@ class App extends Component {
   }
 
   handleLikeImage(event, id) {
+    let CURRENT_USER = 1
+
     console.log(event.target)
+    //  replace 'fa-heart-o' with 'fa-heart'
+    fetch(`http://localhost:8005/fave/${event.target.id}?UID=${CURRENT_USER}`,{
+      method:'POST'
+    })
+    .then((res) => {
+      if(res.status == 200 ){
+        console.log("Successfully posted favourite")
+      }
+    })
   }
 
   handleColorSelect(event) {
