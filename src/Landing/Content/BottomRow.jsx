@@ -8,7 +8,7 @@ class BottomRow extends Component {
       <div className="br-cont">
         {
           arr.map((i) => {
-            var nghbrhd = i.geo.neighbourhood
+            var nghbrhd = i.neighbourhood
             return ( <Card url={i.url} key={arr.indexOf(i)} colors = {i.colArr} area={nghbrhd}/> )
           })
         }
