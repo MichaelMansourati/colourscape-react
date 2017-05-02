@@ -19,7 +19,7 @@ Install the dependencies and start the server.
 ```
 npm install
 npm start
-open http://localhost:2000
+open http://localhost:8004
 ```
 
 ### Static Files

@@ -38,6 +38,8 @@ html, body {
           background-color: #d3d3d3;
         }
       }
+
+
       .ps-form {
         display: flex;
         flex-direction: row;
@@ -61,6 +63,9 @@ html, body {
           margin: 1vh;
           border-radius: 0.6vh;
           .colorbox {
+            &:hover{
+              cursor:pointer
+            }
             -webkit-appearance: none;
             border: 0.2vh solid lightgrey;
             padding: 1vh;
@@ -73,6 +78,7 @@ html, body {
               opacity: 0.25;
             }
           }
+
           .cb-red {
             background-color: red;
           }
@@ -157,6 +163,7 @@ html, body {
     }
   }
   i {
+    cursor: pointer;
     color: white;
     position: relative;
     float: right;
