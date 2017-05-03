@@ -52,7 +52,8 @@ class App extends Component {
       },
       imgData: imgData,
       infoContent: infoContent,
-      hoveredInfoCard: -1
+      hoveredInfoCard: -1,
+      user: false
     }
 
     this.handleColorSelect = this.handleColorSelect.bind(this);
@@ -115,6 +116,7 @@ class App extends Component {
         console.log("Successfully posted favourite")
       }
     })
+  }
 
   handleInfoCardME(event) {
     const enteredCard = event.target.parentNode.id;
@@ -251,18 +253,28 @@ class App extends Component {
     /*
       Do not re-render if location and color have been selected
       re-render will be reset after fetch is called
-      
+
       Dashboard component:
         <Dashboard
         infoContent={this.state.infoContent}
         InfoCardME={this.handleInfoCardME}
         InfoCardML={this.handleInfoCardML}
         hoveredInfoCard={this.state.hoveredInfoCard}
-        /> 
+        />
+
+      Landing componentL
+        <Content imgData={this.state.imgData} clickLike={this.handleLikeImage.bind(this.props.id)}/>
     */
     return (
       <div>
-        <Navbar palette={this.state.colorPalette} colorSelect={this.handleColorSelect.bind(this)} disableColors={this.state.disableColors} placeSearch={this.handlePlaceSearch.bind(this)} loading={this.state.loading}/>
+        <Navbar
+        palette={this.state.colorPalette}
+        colorSelect={this.handleColorSelect.bind(this)}
+        disableColors={this.state.disableColors}
+        placeSearch={this.handlePlaceSearch.bind(this)}
+        loading={this.state.loading}
+        user={this.state.user}
+        />
         <Content imgData={this.state.imgData} clickLike={this.handleLikeImage.bind(this.props.id)}/>
       </div>
     );
