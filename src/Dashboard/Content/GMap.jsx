@@ -16,9 +16,10 @@ class Gmap extends Component {
         {
           infoArr.map((i) => {
             if (this.props.hIC == infoArr.indexOf(i)) {
+              console.log('found the icon')
               return(
                 <div key={infoArr.indexOf(i)} lat={i.lat} lng={i.lon} >
-                  <i className="fa fa-camera-retro fa-2x" aria-hidden="true"></i>
+                  <i className="fa fa-camera-retro fa-3x" aria-hidden="true"></i>
                 </div>
               )
             } else {

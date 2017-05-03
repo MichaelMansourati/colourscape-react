@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Route } from 'react-router-dom'
 import Navbar from './Landing/Navbar.jsx';
 import Content from './Landing/Content.jsx';
 import imgData from './Landing/imgdata.js';
@@ -18,7 +19,7 @@ import infoContent from './Dashboard/Content/infoContent.js'
 class App extends Component {
   constructor() {
     super();
-
+    // fetchRandColour()
     this.state = {
       colorPalette: {
         color1: 'rgb(255, 255, 255)',
@@ -39,7 +40,6 @@ class App extends Component {
         white:  false
       },
       disableColors: {},
-      imgData: imgData,
       queryParams: '',
       color:    false,
       location: false,
@@ -50,7 +50,6 @@ class App extends Component {
         place3: {lat: 43.639429, lon: -79.412441},
         place4: {lat: 43.637383, lon: -79.424779}
       },
-      imgData: imgData,
       infoContent: infoContent,
       hoveredInfoCard: -1
     }
@@ -59,10 +58,17 @@ class App extends Component {
     this.handleInfoCardME  = this.handleInfoCardME.bind(this);
     this.handleInfoCardML  = this.handleInfoCardML.bind(this);
   }
-
-
+  componentWillMount() {
+    fetch(`http://localhost:8005/`)
+    .then((res) => {
+      res.clone().json().then((ans) => {
+        this.setState({
+          imgData:  ans.body
+        })
+      })
+    })
+  }
   componentDidUpdate(prevProps, prevState){
-    console.log("Updated Props")
     console.log(this.state)
     if (this.state.queryParams != prevState.queryParams) {
 
@@ -70,8 +76,6 @@ class App extends Component {
       .then((response) => {
         response.clone().json()
          .then((ans) => {
-          console.log(ans.body)
-
           this.setState({
             imgData:  ans.body,
             loading:  false
@@ -82,16 +86,12 @@ class App extends Component {
          })
       })
     }
-
-
-
   }
 
   handlePlaceSearch(event){
     if(event.charCode === 13){
     event.preventDefault()
       var loc = event.target.value
-      console.log(loc)
 
       this.setState({
         location: true,
@@ -105,16 +105,14 @@ class App extends Component {
   handleLikeImage(event, id) {
     let CURRENT_USER = 1
 
-    console.log(event.target)
-    //  replace 'fa-heart-o' with 'fa-heart'
     fetch(`http://localhost:8005/fave/${event.target.id}?UID=${CURRENT_USER}`,{
       method:'POST'
     })
     .then((res) => {
       if(res.status == 200 ){
-        console.log("Successfully posted favourite")
       }
     })
+  }
 
   handleInfoCardME(event) {
     const enteredCard = event.target.parentNode.id;
@@ -136,7 +134,6 @@ class App extends Component {
 
     this.setState({colorSelect: newColorObj});
 
-
     for (let color in newColorObj) {
       if (newColorObj[color] == true) {
         trueColors.push(color);
@@ -146,7 +143,6 @@ class App extends Component {
     }
 
     if (trueColors.length == 4) {
-      // console.log('at color max');
       let newDisabledColorObj = Object.assign({}, newColorObj);
       for (let color in newDisabledColorObj) {
         newDisabledColorObj[color] = !newDisabledColorObj[color];
@@ -155,7 +151,6 @@ class App extends Component {
     } else {
       this.setState({disableColors: {}});
     }
-    console.log(trueColors)
     let colReqArr = []
     for(var t in trueColors){
       switch (trueColors[t]) {
@@ -214,40 +209,87 @@ class App extends Component {
       colors[`color${index}`] = `rgb(${colReqArr[j].r[1]}, ${colReqArr[j].g[1]}, ${colReqArr[j].b[1]})`
     }
 
-
-    var i = colReqArr[0]
-
-
-    for(var k = 4; k > colReqArr.length; k--){
-      colors[`color${k}`] = 'rbg(255, 255, 255)'
-    }
-    console.log("Color Select ignored:", this.state.color)
-    if(!this.state.color){
-      colQuery = `[[${i.r.join(',')}],[${i.g.join(',')}],[${i.b.join(',')}]]`
-
+    /*
+      used in seach for indexOf to reset the color search
+      */
+    let resSearch = "?color="
+    var first = colReqArr[0]
+    var second = colReqArr[1]
+    var numSel = colReqArr.length
+    // for(var k = 4; k > colReqArr.length; k--){
+    //   colors[`color${k}`] = 'rbg(255, 255, 255)'
+    // }
+    if((numSel <= 2) ){
+      if(first){
+        colQuery = `[[${first.r.join(',')}],[${first.g.join(',')}],[${first.b.join(',')}]]`
+        if(second && !this.state.location){
+          console.log(colQuery)
+          colQuery = `${colQuery}&color2=[[${second.r.join(',')}],[${second.g.join(',')}],[${second.b.join(',')}]]`
+          console.log('Second colour query:',colQuery)
+        }
+        else if (second && this.state.location){
+          console.log("Propper state transfer!!", colQuery)
+          colQuery =
+           `&color2=[[${second.r.join(',')}],[${second.g.join(',')}],[${second.b.join(',')}]]`
+        }
+      }
+      let setObj = {}
       if (this.state.location){
         console.log("Location is selected")
-        this.setState({
-          color: true,
-          colorPalette: colors,
-          queryParams: `${queryParams}&color=${colQuery}`
-       })
+        const ind = this.state.queryParams.indexOf(resSearch)
+        const resetQuery = this.state.queryParams.slice(0,ind)
+        if(ind > 1){
+          switch (numSel) {
+            case 0:
+              console.log(resetQuery)
+              setObj = {
+                color: true,
+                colorPalette: colors,
+                queryParams: `${resetQuery}`
+              }
+              break;
+            case 1:
+              console.log(ind, this.state.queryParams, resetQuery)
+              setObj = {
+                color: true,
+                colorPalette: colors,
+                queryParams: `${resetQuery}?color=${colQuery}`
+              }
+              break;
+            case 2:
+              setObj = {
+                color: true,
+                colorPalette: colors,
+                queryParams: `${this.state.queryParams}${colQuery}`
+              }
+              break;
+
+          }
+        }
+
+        else{
+          setObj = {
+            color: true,
+            colorPalette: colors,
+            queryParams: `${this.state.queryParams}?color=${colQuery}`
+          }
+        }
+
       }
       else{
         console.log("Location not selected")
-        this.setState({
-          color: true,
+        setObj = {
+          color: false,
           colorPalette: colors,
           queryParams: `palette?colQuery=${colQuery}`
-        })
+        }
       }
+      this.setState(setObj)
     }
   }
 
-
   render() {
     var check = this.state.location || this.state.color
-    console.log("Query selected:", check)
     /*
       Do not re-render if location and color have been selected
       re-render will be reset after fetch is called
@@ -259,11 +301,17 @@ class App extends Component {
         InfoCardML={this.handleInfoCardML}
         hoveredInfoCard={this.state.hoveredInfoCard}
         />
+
+      Landing component:
+      <Content imgData={this.state.imgData} clickLike={this.handleLikeImage.bind(this.props.id)}/>
     */
+
     return (
       <div>
         <Navbar palette={this.state.colorPalette} colorSelect={this.handleColorSelect.bind(this)} disableColors={this.state.disableColors} placeSearch={this.handlePlaceSearch.bind(this)} loading={this.state.loading}/>
         <Content imgData={this.state.imgData} clickLike={this.handleLikeImage.bind(this.props.id)}/>
+
+
       </div>
     );
   }

@@ -5,6 +5,14 @@ import Suggests from './Content/Suggests.jsx';
 
 
 class Dashboard extends Component {
+
+
+
+
+
+
+
+
   render() {
 
     return(
