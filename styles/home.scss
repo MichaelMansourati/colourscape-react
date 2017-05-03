@@ -56,11 +56,9 @@ html, body {
   i {
     cursor: pointer;
     color: white;
-    position: relative;
-    float: right;
-    bottom: 2px;
-    font-size: 25px !important;
-    padding-left: 15px;
+    position: absolute;
+    right: 1vh;
+    bottom: 0.75vh;
   }
 
   .tag-space {
@@ -97,7 +95,7 @@ html, body {
     transition: opacity 0.25s;
     position: absolute;
     display: flex;
-    right: 1vh;
+    right: 5vh;
     flex-direction: row;
     justify-content: flex-end;
     margin-left: 1vh;
