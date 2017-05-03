@@ -107,7 +107,11 @@ class App extends Component {
     let CURRENT_USER = 1
 
     console.log(event.target)
-    //  replace 'fa-heart-o' with 'fa-heart'
+
+    //  rmake heart red
+    event.currentTarget.style.color = '#ff4e4e';
+
+
     fetch(`http://localhost:8005/fave/${event.target.id}?UID=${CURRENT_USER}`,{
       method:'POST'
     })
