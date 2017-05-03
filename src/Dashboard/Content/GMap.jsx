@@ -18,7 +18,7 @@ class Gmap extends Component {
             if (this.props.hIC == infoArr.indexOf(i)) {
               return(
                 <div key={infoArr.indexOf(i)} lat={i.lat} lng={i.lon} >
-                  <i className="fa fa-camera-retro fa-2x" aria-hidden="true"></i>
+                  <i className="fa fa-camera-retro fa-3x" aria-hidden="true"></i>
                 </div>
               )
             } else {

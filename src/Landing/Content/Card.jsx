@@ -20,7 +20,7 @@ class Card extends Component {
             <div className="color" style={{backgroundColor: c[1]}}></div>
             <div className="color" style={{backgroundColor: c[2]}}></div>
             <div className="color" style={{backgroundColor: c[3]}}></div>
-            <i className="fa fa-heart-o fa-2x" onClick={this.props.clickLike} id={this.props.id}></i>
+            <i className="fa fa-heart-o" onClick={this.props.clickLike} id={this.props.id}></i>
           </div>
         </div>
       </div>
