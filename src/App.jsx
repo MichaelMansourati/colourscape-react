@@ -251,14 +251,14 @@ class App extends Component {
     /*
       Do not re-render if location and color have been selected
       re-render will be reset after fetch is called
-      
+
       Dashboard component:
         <Dashboard
         infoContent={this.state.infoContent}
         InfoCardME={this.handleInfoCardME}
         InfoCardML={this.handleInfoCardML}
         hoveredInfoCard={this.state.hoveredInfoCard}
-        /> 
+        />
     */
     return (
       <div>
