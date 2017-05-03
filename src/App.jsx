@@ -51,7 +51,8 @@ class App extends Component {
         place4: {lat: 43.637383, lon: -79.424779}
       },
       infoContent: infoContent,
-      hoveredInfoCard: -1
+      hoveredInfoCard: -1,
+      user: false
     }
 
     this.handleColorSelect = this.handleColorSelect.bind(this);
@@ -104,6 +105,8 @@ class App extends Component {
 
   handleLikeImage(event, id) {
     let CURRENT_USER = 1
+    console.log(event.target)
+    event.currentTarget.style.color = '#ff4e4e';
 
     fetch(`http://localhost:8005/fave/${event.target.id}?UID=${CURRENT_USER}`,{
       method:'POST'
@@ -302,13 +305,25 @@ class App extends Component {
         hoveredInfoCard={this.state.hoveredInfoCard}
         />
 
+<<<<<<< HEAD
       Landing component:
       <Content imgData={this.state.imgData} clickLike={this.handleLikeImage.bind(this.props.id)}/>
+=======
+      Landing componentL
+        <Content imgData={this.state.imgData} clickLike={this.handleLikeImage.bind(this.props.id)}/>
+>>>>>>> master
     */
 
     return (
       <div>
-        <Navbar palette={this.state.colorPalette} colorSelect={this.handleColorSelect.bind(this)} disableColors={this.state.disableColors} placeSearch={this.handlePlaceSearch.bind(this)} loading={this.state.loading}/>
+        <Navbar
+        palette={this.state.colorPalette}
+        colorSelect={this.handleColorSelect.bind(this)}
+        disableColors={this.state.disableColors}
+        placeSearch={this.handlePlaceSearch.bind(this)}
+        loading={this.state.loading}
+        user={this.state.user}
+        />
         <Content imgData={this.state.imgData} clickLike={this.handleLikeImage.bind(this.props.id)}/>
 
 
