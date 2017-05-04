@@ -10,6 +10,11 @@
     line-height: 0.75vh;
     font-size: 3.5vh;
     font-weight: 300;
+    letter-spacing: 0.75vw;
+
+    .slashes{
+      font-size: 3.5vh;
+    }
   }
   .login-cont {
     position: absolute;
@@ -28,6 +33,7 @@
       font-size: 2vh;
       color: grey;
       font-weight: lighter;
+      letter-spacing: 0.5vw;
       &:focus {
         outline: none;
       }

@@ -11,9 +11,11 @@ class DynamicTitle extends Component {
     }
     return(
       <a onClick={this.props.navFrom}>
-        <h1>C O L O U R S C A P E
-          <span style={styles.bs1}> \</span>
-          <span style={styles.bs2}>\</span>
+        <h1>COLOURSCAPE
+          <span className="slashes">
+            <span style={styles.bs1}> \</span>
+            <span style={styles.bs2}>\</span>
+          </span>
         </h1>
       </a>
     )
