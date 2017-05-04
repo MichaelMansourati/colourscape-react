@@ -3,32 +3,35 @@
   position: fixed;
   width: 100%;
   height: 5vh;
-  box-shadow: 0 0px 1.5vh 0 #3a3a3a;
   h1 {
-    margin-left: 1vh;
+    cursor: pointer;
+    margin-left: 2vh;
     position: fixed;
     line-height: 0.75vh;
-    font-weight: 400;
     font-size: 3.5vh;
+    font-weight: 300;
   }
   .login-cont {
     position: absolute;
-    right: 1vh;
-    height: 3vh;
-    margin: 1vh;
+    right: 2vh;
+    height: auto;
+    top: 25%;
+    vertical-align: middle;
+    font-size: 2.1vh;
+
     .login-button {
+      cursor: pointer;
       border: none;
       padding: 0;
       background: none;
       font-family: montserrat;
       font-size: 2vh;
       color: grey;
+      font-weight: lighter;
       &:focus {
         outline: none;
       }
-      &:active {
-        background-color: #eeeeee;
-      }
+
     }
   }
   .ps-cont {

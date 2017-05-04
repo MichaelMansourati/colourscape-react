@@ -10,12 +10,12 @@ class DynamicTitle extends Component {
       bs4: {color: palette.color4}
     }
     return(
-      <h1>ColourScape
-        <span style={styles.bs1}> \</span>
-        <span style={styles.bs2}>\</span>
-        <span style={styles.bs3}>\</span>
-        <span style={styles.bs4}>\ </span>
-      </h1>
+      <a onClick={this.props.navFrom}>
+        <h1>C O L O U R S C A P E
+          <span style={styles.bs1}> \</span>
+          <span style={styles.bs2}>\</span>
+        </h1>
+      </a>
     )
   }
 }

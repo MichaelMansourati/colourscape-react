@@ -5,7 +5,6 @@ import Content from './Landing/Content.jsx';
 import imgData from './Landing/imgdata.js';
 import Dashboard from './Dashboard/Dashboard.jsx';
 import infoContent from './Dashboard/Content/infoContent.js'
-
 /*
   Suraj:
   After things get done, work on getting slashes to respond to colours selected, then work on something for <italics>hover</italics>
@@ -15,6 +14,12 @@ import infoContent from './Dashboard/Content/infoContent.js'
 
   User query being buildon component
 */
+// var scrollListener = new ScrollListener();
+
+let SCREENS = {
+  dashboard: 'dashboard',
+  landing: 'landing'
+}
 
 class App extends Component {
   constructor() {
@@ -40,6 +45,7 @@ class App extends Component {
         white:  false
       },
       disableColors: {},
+      pages: 0,
       queryParams: '',
       color:    false,
       location: false,
@@ -50,9 +56,10 @@ class App extends Component {
         place3: {lat: 43.639429, lon: -79.412441},
         place4: {lat: 43.637383, lon: -79.424779}
       },
-      infoContent: infoContent,
+      infoContent: [],
       hoveredInfoCard: -1,
-      user: false
+      user: false,
+      selectedScreen: SCREENS.landing
     }
 
     this.handleColorSelect = this.handleColorSelect.bind(this);
@@ -68,6 +75,10 @@ class App extends Component {
         })
       })
     })
+  }
+
+  componentDidMount() {
+    document.documentElement.addEventListener('scroll', this.handleScroll);
   }
   componentDidUpdate(prevProps, prevState){
     console.log(this.state)
@@ -88,6 +99,10 @@ class App extends Component {
       })
     }
   }
+  handleScroll() {
+    console.log("You did it ¯\\_(ツ)_/¯")
+  }
+
 
   handlePlaceSearch(event){
     if(event.charCode === 13){
@@ -113,6 +128,7 @@ class App extends Component {
     })
     .then((res) => {
       if(res.status == 200 ){
+
       }
     })
   }
@@ -291,6 +307,68 @@ class App extends Component {
     }
   }
 
+
+
+    // create handlers:
+    myScrollStartHandler = ( event ) =>{
+      console.log( 'logs on every scroll move' );
+    };
+
+    myScrollEndHandler = ( event ) =>{
+      console.log( 'logs only when scrolling has stopped (default 300ms delay)' );
+    };
+
+    // and add handlers after window is loaded
+    // window.onLoad = function(){
+    //   scrollListener.addScrollHandler('some-id', myScrollStartHandler, myScrollEndHandler );
+    // };
+
+    renderScreen = () => {
+
+      switch (this.state.selectedScreen) {
+        case SCREENS.landing:
+          return (
+              <div>
+                <Content imgData={this.state.imgData} clickLike={this.handleLikeImage.bind(this.props.id)}/>
+              </div>
+            )
+        case SCREENS.dashboard:
+          return (
+              <div>
+                <Dashboard
+
+                  infoContent={this.state.infoContent}
+                  InfoCardME={this.handleInfoCardME}
+                  InfoCardML={this.handleInfoCardML}
+                  hoveredInfoCard={this.state.hoveredInfoCard}
+                  />
+              </div>
+            )
+        default:
+          return (
+              <div>
+                <Content imgData={this.state.imgData} clickLike={this.handleLikeImage.bind(this.props.id)}/>
+              </div>
+            )
+      }
+
+    }
+
+
+    navigateTo = () => {
+      fetch("http://localhost:8005/dashboard")
+        .then((res) => {
+          res.clone().json().then((ans) => {
+            this.setState({
+              infoContent:  ans.body,
+              selectedScreen: SCREENS.dashboard
+            })
+          })
+        })
+    }
+    navFrom = () => {
+      this.setState({selectedScreen: SCREENS.landing})
+    }
   render() {
     var check = this.state.location || this.state.color
     /*
@@ -305,18 +383,11 @@ class App extends Component {
         hoveredInfoCard={this.state.hoveredInfoCard}
         />
 
-<<<<<<< HEAD
+        <DashNavbar palette={this.state.colorPalette}/>
+
       Landing component:
       <Content imgData={this.state.imgData} clickLike={this.handleLikeImage.bind(this.props.id)}/>
-=======
-      Landing componentL
-        <Content imgData={this.state.imgData} clickLike={this.handleLikeImage.bind(this.props.id)}/>
->>>>>>> master
-    */
-
-    return (
-      <div>
-        <Navbar
+      <Navbar
         palette={this.state.colorPalette}
         colorSelect={this.handleColorSelect.bind(this)}
         disableColors={this.state.disableColors}
@@ -324,8 +395,43 @@ class App extends Component {
         loading={this.state.loading}
         user={this.state.user}
         />
-        <Content imgData={this.state.imgData} clickLike={this.handleLikeImage.bind(this.props.id)}/>
 
+
+
+
+
+
+        <Content imgData={this.state.imgData} clickLike={this.handleLikeImage.bind(this.props.id)}/>
+      <Navbar
+        palette={this.state.colorPalette}
+        colorSelect={this.handleColorSelect.bind(this)}
+        disableColors={this.state.disableColors}
+        placeSearch={this.handlePlaceSearch.bind(this)}
+        loading={this.state.loading}
+        user={this.state.user}
+        navigateTo={this.navigateTo}
+        selectedScreen={this.state.selectedScreen}
+        />
+      FOR NAVBUTTON  onClick={() => this.navigateTo('dashboard')}
+
+
+    */
+
+    return (
+      <div>
+        <Navbar
+          palette={this.state.colorPalette}
+          colorSelect={this.handleColorSelect.bind(this)}
+          disableColors={this.state.disableColors}
+          placeSearch={this.handlePlaceSearch.bind(this)}
+          loading={this.state.loading}
+          user={this.state.user}
+          navigateTo={this.navigateTo}
+          navFrom={this.navFrom}
+          selectedScreen={this.state.selectedScreen}
+          />
+
+        { this.renderScreen() }
 
       </div>
     );
