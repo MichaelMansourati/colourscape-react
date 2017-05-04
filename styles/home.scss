@@ -56,6 +56,11 @@ html, body {
   i {
     cursor: pointer;
     color: white;
+    position: relative;
+    float: right;
+    bottom: 2px;
+    font-size: 2vh !important;
+    padding-left: 15px;
     position: absolute;
     right: 1vh;
     bottom: 0.75vh;

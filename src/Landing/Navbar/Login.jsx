@@ -11,7 +11,7 @@ class Login extends Component {
     } else {
       return(
         <div className="login-cont">
-          <button className="login-button" name="Login/register">login/register</button>
+          <button className="login-button" name="Login/register" onClick={this.props.navigateTo}>dashboard</button>
         </div>
       )
     }

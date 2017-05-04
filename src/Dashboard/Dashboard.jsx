@@ -5,8 +5,8 @@ import Suggests from './Content/Suggests.jsx';
 
 
 class Dashboard extends Component {
-  render() {
 
+  render() {
     return(
       <div className="db-cont">
         <div className="content-cont">
@@ -19,6 +19,8 @@ class Dashboard extends Component {
         </div>
         <div className="sidebar">
           <GMap infoContent={this.props.infoContent} hIC={this.props.hoveredInfoCard} />
+        </div>
+        <div className="suggests-bar">
           <Suggests />
         </div>
       </div>
