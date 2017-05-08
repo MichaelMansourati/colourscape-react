@@ -3,7 +3,7 @@
 Browse Toronto and its various neighbourhoods by your favourite colour palette.
 
 ## Stack Requirements
-- React
+- React Node Express
 - JavaScript
 - Google Cloud Platform Vision API
 - Flickr API

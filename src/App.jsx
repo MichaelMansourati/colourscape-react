@@ -1,3 +1,11 @@
+/*
+BY JOANN LAI, MICHAEL MANSOURATI, AND SURAJ MISTRY
+
+The client-side project of a react application that runs in tandem with the server found at
+https://github.com/laijoann/no-swearing
+
+*/
+
 import React, {Component} from 'react';
 import { Route } from 'react-router-dom'
 import Navbar from './Landing/Navbar.jsx';
@@ -5,16 +13,7 @@ import Content from './Landing/Content.jsx';
 import imgData from './Landing/imgdata.js';
 import Dashboard from './Dashboard/Dashboard.jsx';
 import infoContent from './Dashboard/Content/infoContent.js'
-/*
-  Suraj:
-  After things get done, work on getting slashes to respond to colours selected, then work on something for <italics>hover</italics>
 
-  Initial search query in ComponenetDidMount
-  this
-
-  User query being buildon component
-*/
-// var scrollListener = new ScrollListener();
 
 let SCREENS = {
   dashboard: 'dashboard',
@@ -24,7 +23,6 @@ let SCREENS = {
 class App extends Component {
   constructor() {
     super();
-    // fetchRandColour()
     this.state = {
       colorPalette: {
         color1: 'rgb(255, 255, 255)',
@@ -81,7 +79,6 @@ class App extends Component {
     document.documentElement.addEventListener('scroll', this.handleScroll);
   }
   componentDidUpdate(prevProps, prevState){
-    console.log(this.state)
     if (this.state.queryParams != prevState.queryParams) {
 
       fetch(`http://localhost:8005/${this.state.queryParams}`)
@@ -99,6 +96,7 @@ class App extends Component {
       })
     }
   }
+
   handleScroll() {
     console.log("You did it ¯\\_(ツ)_/¯")
   }
@@ -161,7 +159,7 @@ class App extends Component {
       }
     }
 
-    if (trueColors.length == 4) {
+    if (trueColors.length == 2) {
       let newDisabledColorObj = Object.assign({}, newColorObj);
       for (let color in newDisabledColorObj) {
         newDisabledColorObj[color] = !newDisabledColorObj[color];
@@ -235,9 +233,6 @@ class App extends Component {
     var first = colReqArr[0]
     var second = colReqArr[1]
     var numSel = colReqArr.length
-    // for(var k = 4; k > colReqArr.length; k--){
-    //   colors[`color${k}`] = 'rbg(255, 255, 255)'
-    // }
     if((numSel <= 2) ){
       if(first){
         colQuery = `[[${first.r.join(',')}],[${first.g.join(',')}],[${first.b.join(',')}]]`
@@ -318,11 +313,6 @@ class App extends Component {
       console.log( 'logs only when scrolling has stopped (default 300ms delay)' );
     };
 
-    // and add handlers after window is loaded
-    // window.onLoad = function(){
-    //   scrollListener.addScrollHandler('some-id', myScrollStartHandler, myScrollEndHandler );
-    // };
-
     renderScreen = () => {
 
       switch (this.state.selectedScreen) {
@@ -351,18 +341,19 @@ class App extends Component {
               </div>
             )
       }
-
     }
-
 
     navigateTo = () => {
       fetch("http://localhost:8005/dashboard")
         .then((res) => {
           res.clone().json().then((ans) => {
             this.setState({
-              infoContent:  ans.body,
+              infoContent:  ans,
               selectedScreen: SCREENS.dashboard
             })
+          })
+          .then((st8) => {
+            console.log(this.state)
           })
         })
     }
@@ -374,47 +365,6 @@ class App extends Component {
     /*
       Do not re-render if location and color have been selected
       re-render will be reset after fetch is called
-
-      Dashboard component:
-        <Dashboard
-        infoContent={this.state.infoContent}
-        InfoCardME={this.handleInfoCardME}
-        InfoCardML={this.handleInfoCardML}
-        hoveredInfoCard={this.state.hoveredInfoCard}
-        />
-
-        <DashNavbar palette={this.state.colorPalette}/>
-
-      Landing component:
-      <Content imgData={this.state.imgData} clickLike={this.handleLikeImage.bind(this.props.id)}/>
-      <Navbar
-        palette={this.state.colorPalette}
-        colorSelect={this.handleColorSelect.bind(this)}
-        disableColors={this.state.disableColors}
-        placeSearch={this.handlePlaceSearch.bind(this)}
-        loading={this.state.loading}
-        user={this.state.user}
-        />
-
-
-
-
-
-
-        <Content imgData={this.state.imgData} clickLike={this.handleLikeImage.bind(this.props.id)}/>
-      <Navbar
-        palette={this.state.colorPalette}
-        colorSelect={this.handleColorSelect.bind(this)}
-        disableColors={this.state.disableColors}
-        placeSearch={this.handlePlaceSearch.bind(this)}
-        loading={this.state.loading}
-        user={this.state.user}
-        navigateTo={this.navigateTo}
-        selectedScreen={this.state.selectedScreen}
-        />
-      FOR NAVBUTTON  onClick={() => this.navigateTo('dashboard')}
-
-
     */
 
     return (

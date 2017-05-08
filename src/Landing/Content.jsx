@@ -27,9 +27,6 @@ class Content extends Component {
 
     }
     return(
-
-      //going to create separate arrays to send to top and bottom in content
-
       <div className="ms-cont">
         <TopRow arr={top} clickLike={this.props.clickLike}/>
         <BottomRow arr={bottom} clickLike={this.props.clickLike}/>
